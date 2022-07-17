@@ -1,6 +1,6 @@
 const path = require('path');
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow } = require('electron')
 const isDev = require('electron-is-dev');
 
 const express = require('express')
@@ -43,8 +43,8 @@ function createWindow() {
     // Open the DevTools.
     if (isDev) {
         win.webContents.openDevTools({ mode: 'detach' });
-    }
-}
+    };
+};
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
