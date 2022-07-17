@@ -7,6 +7,8 @@ test('links are present', () => {
     .toHaveAttribute('href', 'home')
   expect(screen.getByRole("link", { name: "About" }))
     .toHaveAttribute('href', 'about')
-  expect(screen.getByRole("link", { name: "Contact" }))
-    .toHaveAttribute('href', 'contact')
+  expect(screen.getByRole("link", { name: "Find" }))
+    .toHaveAttribute('href', 'find')
+  expect(screen.getByRole("link", { name: "Select" }))
+    .toHaveAttribute('href', 'select')
 });

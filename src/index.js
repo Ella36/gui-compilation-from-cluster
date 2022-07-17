@@ -7,7 +7,8 @@ import '@forevolve/bootstrap-dark/dist/css/bootstrap-dark.min.css'
 import Navigation from "./components/Navigation"
 import Home from "./components/Home"
 import About from "./components/About"
-import Contact from "./components/Contact"
+import Select from "./components/Select"
+import Find from "./components/Find"
 import Footer from "./components/Footer"
 
 ReactDOM.render(
@@ -16,8 +17,9 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/find" element={<Find />} />
+      <Route path="/select" element={<Select />} />
       <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
     </Routes>
     <Footer />
   </Router>,
