@@ -1,28 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './components/App';
+import Footer from "./components/Footer"
 import '@forevolve/bootstrap-dark/dist/css/bootstrap-dark.min.css'
 
-import Navigation from "./components/Navigation"
-import Settings from "./components/Settings"
-import About from "./components/About"
-import Select from "./components/Select"
-import Find from "./components/Find"
-import Footer from "./components/Footer"
-
 ReactDOM.render(
-  <Router>
-    <Navigation />
-    <Routes>
-      <Route path="/" element={<Settings />} />
-      <Route path="/settings" element={<Settings />} />
-      <Route path="/find" element={<Find />} />
-      <Route path="/select" element={<Select />} />
-      <Route path="/about" element={<About />} />
-    </Routes>
+  <React.StrictMode>
+    <App />
     <Footer />
-  </Router>,
-
-  document.getElementById("root")
+  </React.StrictMode>,
+  document.getElementById('root')
 );
