@@ -5,9 +5,9 @@ export default class Footer extends React.Component {
 render() {
   return(
     <div className="footer">
-      <footer class="py-2 bg-dark fixed-bottom">
-        <div class="container">
-          <p class="m-0 text-center text-white">
+      <footer className="py-2 bg-dark fixed-bottom">
+        <div className="container">
+          <p className="m-0 text-center text-white">
             Copyright &copy; Your Website 2022
           </p>
         </div>

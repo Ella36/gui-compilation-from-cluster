@@ -1,12 +1,14 @@
 const path = require('path');
 
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const isDev = require('electron-is-dev');
 
 const express = require('express')
 const expressApp = express();
 const port = 5001;
 const cors = require('cors');
+
+const fs = require('fs')
 
 expressApp.use(cors());
 expressApp.options('*', cors());
@@ -29,7 +31,7 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            nodeIntegration: true,
+            preload: path.join(__dirname, 'preload.js'),
         },
     });
 
@@ -44,7 +46,25 @@ function createWindow() {
     if (isDev) {
         win.webContents.openDevTools({ mode: 'detach' });
     };
+
 };
+
+ipcMain.handle('read-file', (_, fileName) => {
+    const fileContent = fs.readFileSync(fileName, { encoding: 'utf-8' })
+    console.debug(`read file! ${fileContent}`)
+    return fileContent
+});
+
+ipcMain.on('write-file', (_, fileName, content) => {
+    fs.writeFile(fileName, content, function (err) {
+        if (err) {
+            console.debug(err);
+        }
+        else {
+            console.debug("The file was saved!");
+        }
+    });
+});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
