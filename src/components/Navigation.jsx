@@ -6,7 +6,7 @@ export default class Navigation extends React.Component {
     return (
       <Navbar bg="dark" fixed="top" variant="dark"> 
         <Container>
-          <Navbar.Brand href="home">Home</Navbar.Brand>
+          <Navbar.Brand href="settings">Settings</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="find">Find</Nav.Link>
             <Nav.Link href="select">Select</Nav.Link>

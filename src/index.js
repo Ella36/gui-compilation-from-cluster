@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import '@forevolve/bootstrap-dark/dist/css/bootstrap-dark.min.css'
 
 import Navigation from "./components/Navigation"
-import Home from "./components/Home"
+import Settings from "./components/Settings"
 import About from "./components/About"
 import Select from "./components/Select"
 import Find from "./components/Find"
@@ -15,8 +15,8 @@ ReactDOM.render(
   <Router>
     <Navigation />
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Settings />} />
+      <Route path="/settings" element={<Settings />} />
       <Route path="/find" element={<Find />} />
       <Route path="/select" element={<Select />} />
       <Route path="/about" element={<About />} />

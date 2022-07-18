@@ -5,8 +5,8 @@ render () {
   return (
     <div className="about">
       <div className="container">
-        <div className="row align-items-center my-5">
-          <div className="col-lg-5">
+        <div className="row align-items-center mt-5 p-2">
+          <div>
             <h1 className="font-weight-light">About</h1>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting

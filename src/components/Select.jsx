@@ -3,11 +3,11 @@ import React from "react";
 export default class Select extends React.Component {
 render () {
   return (
-    <div className="contact">
+    <div className="select">
       <div className="container">
-        <div className="row align-items-center my-5">
+        <div className="row align-items-center mt-5 p-2">
           <div className="col-lg-5">
-            <h1 className="font-weight-light">Contact</h1>
+            <h1 className="font-weight-light">Select</h1>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
