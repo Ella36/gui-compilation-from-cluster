@@ -1,18 +1,18 @@
 function clip_data_to_compilation(c) {
-    console.log(`clip_data_to_compilation ${c}`)
+    console.debug(`clip_data_to_compilation ${c}`)
     return {
-      "download": 0,
-      "error": 0,
-      "url": c.url,
-      "created_at": c.created_at,
-      "game_id": c.game_id,
-      "game": c.game,
-      "creator": c.creator,
-      "language": c.language,
-      "thumbnail_url": c.thumbnail_url,
-      "title": c.title,
-      "duration": c.duration,
-      "view_count": c.view_count,
+        "download": 0,
+        "error": 0,
+        "url": c.url,
+        "created_at": c.created_at,
+        "game_id": c.game_id,
+        "game": c.game,
+        "creator": c.creator,
+        "language": c.language,
+        "thumbnail_url": c.thumbnail_url,
+        "title": c.title,
+        "duration": c.duration,
+        "view_count": c.view_count,
     }
 }
 
@@ -30,13 +30,13 @@ export default class ClipArray {
                 )
             )
             );
-        console.log(clips)
+        console.debug(clips)
         this.clips = clips
         return this
     }
 
     fill_from_compilation(compilation_data) {
-        console.log(`Filling compilation with: ${compilation_data}`)
+        console.debug(`Filling compilation with: ${compilation_data}`)
         for (let i = 0; i < compilation_data.length; i++) {
             this.clips.push(compilation_data[i]);
         }
@@ -48,7 +48,7 @@ export default class ClipArray {
 
     get amountOfClips() { return this.clips.length };
     get totalDuration() {
-        return this.clips.reduce( (prev, curr) => prev + curr.duration, 0)
+        return this.clips.reduce((prev, curr) => prev + curr.duration, 0)
     }
 
     get isEmpty() { return this.clips.length <= 0 };
@@ -60,11 +60,11 @@ export default class ClipArray {
 
 
     get frequency() {
-        if (this.clips.length <= 0){
+        if (this.clips.length <= 0) {
             return {}
         }
         let freq = {}
-        this.clips.forEach( (clip) => freq[clip.creator] = (freq[clip.creator] || 0) + 1)
+        this.clips.forEach((clip) => freq[clip.creator] = (freq[clip.creator] || 0) + 1)
         return freq
     };
 
@@ -83,7 +83,10 @@ export default class ClipArray {
     removeIndex(index) {
         if (this.isEmpty) {
             console.debug(`The ClipArray is empty!`);
-            return
+            return this
+        }
+        if (index === undefined){
+            return this
         }
         const removedClip = this.clips.splice(index, 1)[0]
         console.debug(`Removed clip: ${removedClip}`)
@@ -98,6 +101,17 @@ export default class ClipArray {
     reverse() {
         this.clips.reverse()
         return this
+    }
+
+
+    indexOfLowN() {
+        const result = this.clips.findIndex((clip) => {
+            return this.frequency[clip.creator] === undefined;
+        });
+        return result
+    }
+    indexOfMostViews() {
+        return 0
     }
 
 }

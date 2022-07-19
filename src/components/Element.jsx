@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 export default class Element extends React.Component {
     handleClick = (name) => {
-      console.log(`Click! ${name}`)
+      console.debug(`Click! ${name}`)
         if (this.props.clickHandler === undefined){
             return
         }

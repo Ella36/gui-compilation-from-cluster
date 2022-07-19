@@ -9,9 +9,11 @@ export default class CardDisplay extends React.Component {
           <Card.Img variant="left" src={this.props.img} alt="Card image" />
           <Card.Body>
             <Card.Title>{this.props.id} {this.props.creator} {this.props.game} </Card.Title>
-            <Card.Text> {this.props.title} </Card.Text>
             <Card.Text>
-              {Number(this.props.view_count).toLocaleString()} {this.props.duration}s {this.props.language} {this.props.created_at} {this.props.game_id}
+              {this.props.title}
+            </Card.Text>
+            <Card.Text>
+              {Number(this.props.view_count).toLocaleString()} {Number(this.props.duration).toLocaleString()}s {this.props.language} {this.props.created_at} {this.props.game_id}
             </Card.Text>
           </Card.Body>
         </Card>

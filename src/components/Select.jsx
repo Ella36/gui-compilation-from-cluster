@@ -19,7 +19,7 @@ export default class Select extends React.Component {
       this.setState({
         items: this.state.items.concat([""])
       });
-    }, 1000);
+    }, 250);
   };
 
   render() {

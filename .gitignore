@@ -1,3 +1,9 @@
+# input
+clips.json
+compilation.json
+# output
+compilation.csv
+
 # dependencies
 /node_modules
 /.pnp
