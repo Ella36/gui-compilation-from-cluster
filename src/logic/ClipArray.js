@@ -16,7 +16,6 @@ function clip_data_to_compilation(c) {
     }
 }
 
-
 export default class ClipArray {
     constructor() {
         this.clips = [];
@@ -57,6 +56,16 @@ export default class ClipArray {
 
     get csv() {
         return this.clips.map((clip) => clip.url).join(',')
+    };
+
+
+    get frequency() {
+        if (this.clips.length <= 0){
+            return {}
+        }
+        let freq = {}
+        this.clips.forEach( (clip) => freq[clip.creator] = (freq[clip.creator] || 0) + 1)
+        return freq
     };
 
     swap(to, from) {

@@ -22,9 +22,11 @@ render() {
             <code className="m-1">
               Videos:  {this.props.compilationArray.amountOfClips}
             </code>
-            <code className="m-1">Edit ./compilation.json</code>
+            <code className="m-1">
+              Freq:  {JSON.stringify(this.props.compilationArray.frequency)}
+            </code>
             <Button onClick={() => this.handleClick("ReadClips")} className="btn m-1 p-2 btn-success">Read clips.json</Button>
-            <Button onClick={() => this.handleClick("ReadCompilation")} className="btn m-1 p-2 btn-success">Read compilation.json</Button>
+            <Button onClick={() => this.handleClick("ReadCompilation")} className="btn m-1 p-2 btn-warning">Read compilation.json</Button>
             <Button onClick={() => this.handleClick("SaveCompilation")} className="btn m-1 p-2 btn-danger">Save compilation.csv</Button>
           </p>
         </div>

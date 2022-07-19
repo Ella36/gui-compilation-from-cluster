@@ -16,19 +16,18 @@ export default class Element extends React.Component {
   render() {
     return (
       <Row>
-        <Col className="col-1">
-          <p>{this.props.id+1}</p>
-          </Col>
         <Col className="col-9">
           <CardDisplay
-            title={this.props.clip.title}
-            duration={this.props.clip.duration}
-            creator={this.props.clip.creator}
-            view_count={this.props.clip.view_count}
-            language={this.props.clip.language}
-            game_id={this.props.clip.game_id}
-            game={this.props.clip.game}
             created_at={this.props.clip.created_at}
+            creator={this.props.clip.creator}
+            duration={this.props.clip.duration}
+            game={this.props.clip.game}
+            game_id={this.props.clip.game_id}
+            id={this.props.id+1}
+            img={this.props.clip.thumbnail_url}
+            language={this.props.clip.language}
+            title={this.props.clip.title}
+            view_count={this.props.clip.view_count}
           />
           </Col>
         <Col className="col-2">
@@ -46,7 +45,7 @@ export default class Element extends React.Component {
             else {
               return (
                 <div>
-                  <Button onClick={() => this.handleClick(`Add${this.props.id}`)} className="btn m-1 p-2 btn-warning">Add</Button>
+                  <Button onClick={() => this.handleClick(`Add${this.props.id}`)} className="btn m-1 p-2 btn-success">Add</Button>
                   <Button onClick={() => this.handleClick(`ClipsRemove${this.props.id}`)} className="btn m-1 p-2 btn-danger">Remove</Button>
                 </div>
               )
