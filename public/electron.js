@@ -1,6 +1,6 @@
 const path = require('path');
 
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, shell } = require('electron')
 const isDev = require('electron-is-dev');
 
 const express = require('express')
@@ -47,6 +47,11 @@ function createWindow() {
         win.webContents.openDevTools({ mode: 'detach' });
     };
 
+    // Open links in default browser
+    win.webContents.on('new-window', function(e, url) {
+        e.preventDefault();
+        shell.openExternal(url);
+    });
 };
 
 ipcMain.handle('read-json', (_, fileName) => {
@@ -56,8 +61,9 @@ ipcMain.handle('read-json', (_, fileName) => {
     return json
 });
 
-ipcMain.on('write-json', (_, fileName, content) => {
-    fs.writeFile(fileName, content, function (err) {
+ipcMain.on('write-file', (_, fileName, fileContent) => {
+    console.debug(`saving! ${fileContent}`)
+    fs.writeFile(fileName, fileContent, function (err) {
         if (err) {
             console.debug(err);
         }

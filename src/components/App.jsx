@@ -5,12 +5,17 @@ import Select from './Select';
 import Edit from './Edit';
 import Footer from "./Footer"
 import manipulate from "../logic/manipulate"
+import ClipArray from "../logic/ClipArray"
 
 
 export default class App extends React.Component {
   constructor() {
     super();
-    this.state = { compilation: [] };
+    this.state = {
+      n: 0,
+      project: "untitled",
+      clipArray: new ClipArray(),
+    };
   }
 
   handleClick = async (buttonName) => (
@@ -25,7 +30,12 @@ export default class App extends React.Component {
               <Select />
             </div>
             <div className="col-5 overflow-auto h-100">
-              <Edit compilation={this.state.compilation} />
+              <Edit
+               n={this.state.n}
+               project={this.state.project}
+               clipArray={this.state.clipArray}
+               clickHandler={this.handleClick}
+               />
             </div>
           </div>
     <Footer clickHandler={this.handleClick} />
