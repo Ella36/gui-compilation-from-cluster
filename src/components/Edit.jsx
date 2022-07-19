@@ -24,7 +24,7 @@ export default class Edit extends React.Component {
               )
             }
             else {
-             return "Empty"
+             return
             }
           })()}
         </Container>
