@@ -1,5 +1,5 @@
 import React from "react";
-import EditElement from "./EditElement";
+import Element from "./Element";
 import Container from 'react-bootstrap/Container';
 
 export default class Edit extends React.Component {
@@ -12,12 +12,13 @@ export default class Edit extends React.Component {
           {(() => {
             if (this.props.n !== 0) {
               return (
-                this.props.clipArray.clips.map(
+                this.props.compilationArray.clips.map(
                   (clip, i) =>
-                    <EditElement
+                    <Element
                       key={i}
                       clip={clip}
                       clickHandler={this.props.clickHandler}
+                      isCompilation={true}
                       id={i}
                     />
                 )

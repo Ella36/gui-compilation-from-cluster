@@ -1,19 +1,22 @@
 import ClipArray from "./ClipArray"
 
+async function read_clips() {
+  const data = await window.electron.readJSON('clips.json');
+  return data
+}
+
 async function read_compilation() {
-  let compilation = await window.electron.readJSON('compilation.json');
-  console.log(`Async compilation with: ${compilation}`)
-  console.log(`Async clips : ${compilation.clips}`)
+  const data = await window.electron.readJSON('compilation.json');
   return {
-    n: compilation.n,
-    clips: compilation.clips,
-    project: compilation.project,
+    n: data.n,
+    clips: data.clips,
+    project: data.project,
   }
 }
 
-async function save_compilation(clipArray) {
-  console.log(`Before ${clipArray.csv}`)
-  const t = await window.electron.writeFile('compilation.csv', clipArray.csv);
+async function save_compilation(compilationArray) {
+  console.log(`Before ${compilationArray.csv}`)
+  await window.electron.writeFile('compilation.csv', compilationArray.csv);
 }
 
 export default async function manipulate(obj, buttonName) {
@@ -26,11 +29,12 @@ export default async function manipulate(obj, buttonName) {
     const from = n
     const to = n - 1 < 0 ? 0 : n - 1
     console.debug(`to: ${to}`);
-    let clips_swapped = obj.clipArray.swap(to, from)
+    let clips_swapped = obj.compilationArray.swap(to, from)
     return {
       n: obj.n,
       project: obj.project,
-      clipArray: clips_swapped,
+      compilationArray: clips_swapped,
+      clipsArray: obj.clipsArray,
     };
   }
 
@@ -40,13 +44,14 @@ export default async function manipulate(obj, buttonName) {
     console.debug(`from: ${n}`);
     // Manipulate compilation to move index n 1 space up
     const from = n
-    const to = n + 1 >= obj.clipArray.amountOfClips ? n : n + 1
+    const to = n + 1 >= obj.compilationArray.amountOfClips ? n : n + 1
     console.debug(`to: ${to}`);
-    let clips_swapped = obj.clipArray.swap(to, from)
+    let clips_swapped = obj.compilationArray.swap(to, from)
     return {
       n: obj.n,
       project: obj.project,
-      clipArray: clips_swapped,
+      compilationArray: clips_swapped,
+      clipsArray: obj.clipsArray,
     };
   }
 
@@ -58,28 +63,41 @@ export default async function manipulate(obj, buttonName) {
     return {
       n: obj.n,
       project: obj.project,
-      clipArray: obj.clipArray.removeIndex(n),
+      compilationArray: obj.compilationArray.removeIndex(n),
+      clipsArray: obj.clipsArray,
     };
   }
 
   if (buttonName === "SaveCompilation") {
     console.debug("SaveCompilation");
-    const t = await save_compilation(obj.clipArray)
+    const t = await save_compilation(obj.compilationArray)
     return {
       n: obj.n,
       project: obj.project,
-      clipArray: obj.clipArray,
+      compilationArray: obj.compilationArray,
+      clipsArray: obj.clipsArray,
     }
   }
 
   if (buttonName === "ReadCompilation") {
     console.debug("ReadCompilation");
-    const compilation = await read_compilation()
-    console.log(`manipulate read : ${compilation.clips}`)
+    const data = await read_compilation()
     return {
-      n: compilation.n,
-      project: compilation.project,
-      clipArray: new ClipArray().fill_from_compilation(compilation.clips)
-  };
-}
+      n: data.n,
+      project: data.project,
+      compilationArray: new ClipArray().fill_from_compilation(data.clips),
+      clipsArray: obj.clipsArray,
+    };
+  }
+
+  if (buttonName === "ReadClips") {
+    console.debug("ReadClips");
+    const data = await read_clips()
+    return {
+      n: obj.n,
+      project: obj.project,
+      compilationArray: obj.compilationArray,
+      clipsArray: new ClipArray().fill_from_clips(data),
+    };
+  }
 }
