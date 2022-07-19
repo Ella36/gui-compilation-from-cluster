@@ -38,7 +38,7 @@ export default class Element extends React.Component {
                 <div>
                   <Button onClick={() => this.handleClick(`Up${this.props.id}`)} className="btn m-1 p-2 btn-primary">Up</Button>
                   <Button onClick={() => this.handleClick(`Down${this.props.id}`)} className="btn m-1 p-2 btn-primary">Down</Button>
-                  <Button onClick={() => this.handleClick(`Remove${this.props.id}`)} className="btn m-1 p-2 btn-danger">Remove</Button>
+                  <Button onClick={() => this.handleClick(`CompilationRemove${this.props.id}`)} className="btn m-1 p-2 btn-danger">Remove</Button>
                 </div>
               )
             }

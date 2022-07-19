@@ -8,25 +8,15 @@ export default class Edit extends React.Component {
       <div>
         <h1> Edit {this.props.project} </h1>
         <Container>
-          {(() => {
-            if (this.props.n !== 0) {
-              return (
-                this.props.compilationArray.clips.map(
-                  (clip, i) =>
-                    <Element
-                      key={i}
-                      clip={clip}
-                      clickHandler={this.props.clickHandler}
-                      isCompilation={true}
-                      id={i}
-                    />
-                )
-              )
-            }
-            else {
-             return
-            }
-          })()}
+          {this.props.compilationArray.clips.map(
+            (clip, i) =>
+              <Element
+                key={i}
+                clip={clip}
+                clickHandler={this.props.clickHandler}
+                isCompilation={true}
+                id={i}
+              />)}
         </Container>
       </div>
     );

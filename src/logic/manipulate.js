@@ -88,6 +88,7 @@ export default async function manipulate(obj, buttonName) {
     const n = Number(buttonName.match(/[0-9]+/)[0])
     console.debug(`from: ${n}`);
     const clip = obj.clipsArray.clips[n]
+    console.log(`Clip to remove ${clip}`)
     return {
       n: obj.n,
       project: obj.project,
