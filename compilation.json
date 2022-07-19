@@ -1,0 +1,31 @@
+{
+  "project": "cluster_sample_30d",
+  "wd": "proj-cluster_sample_30d-1",
+  "n": 2,
+  "clips": [
+    {
+      "download": false,
+      "error": false,
+      "url": "https://clips.twitch.tv/SillyHonorableWormKreygasm-UPQdt0lHiolZ_D04",
+      "created_at": "2022-07-16",
+      "game_id": "509658",
+      "language": "en",
+      "thumbnail_url": "https://clips-media-assets2.twitch.tv/x0Xm_lD0HbdJR4qJWfw9OA/AT-cm%7Cx0Xm_lD0HbdJR4qJWfw9OA-preview-480x272.jpg",
+      "title": "gotta bounce out",
+      "duration": 60.0,
+      "view_count": 252591
+    },
+    {
+      "download": false,
+      "error": false,
+      "url": "https://clips.twitch.tv/UnsightlySpeedyKleeBleedPurple-l0FKGCwPaHQVtDD0",
+      "created_at": "2022-07-17",
+      "game_id": "509658",
+      "language": "en",
+      "thumbnail_url": "https://clips-media-assets2.twitch.tv/Yyq9F5dBShgsD2h0FbQw9A/AT-cm%7CYyq9F5dBShgsD2h0FbQw9A-preview-480x272.jpg",
+      "title": "ESFAND AND STREAMERS GET SHOT AT BY DEGENS DOING THE ORBEEZ CHALLENGE",
+      "duration": 36.0,
+      "view_count": 232754
+    }
+  ]
+}

@@ -3,10 +3,10 @@ const { contextBridge, ipcRenderer } = require('electron')
 
 
 contextBridge.exposeInMainWorld('electron', {
-    readFile: async (fileName) => {
-        return await ipcRenderer.invoke('read-file', fileName)
+    readJSON: (fileName) => {
+        return ipcRenderer.invoke('read-json', fileName)
     },
-    writeFile: (fileName, content) => {
-        ipcRenderer.send('write-file', fileName, content);
+    writeJSON: (fileName, content) => {
+        ipcRenderer.send('write-json', fileName, content);
     },
 });

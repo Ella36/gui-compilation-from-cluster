@@ -49,13 +49,14 @@ function createWindow() {
 
 };
 
-ipcMain.handle('read-file', (_, fileName) => {
+ipcMain.handle('read-json', (_, fileName) => {
     const fileContent = fs.readFileSync(fileName, { encoding: 'utf-8' })
-    console.debug(`read file! ${fileContent}`)
-    return fileContent
+    console.debug(`read json! ${fileContent}`)
+    json = JSON.parse(fileContent);
+    return json
 });
 
-ipcMain.on('write-file', (_, fileName, content) => {
+ipcMain.on('write-json', (_, fileName, content) => {
     fs.writeFile(fileName, content, function (err) {
         if (err) {
             console.debug(err);

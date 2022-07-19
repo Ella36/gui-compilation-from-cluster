@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 export default class CardDisplay extends React.Component {
   render() {
   return (
-    <Card className="bg-dark text-dark col-3">
+    <Card className="bg-dark text-dark col-12 m-2">
       <Card.Img src="./placeholder.jpg" alt="Card image" />
       <Card.ImgOverlay>
         <Card.Title>Card title</Card.Title>
