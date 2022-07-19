@@ -25,32 +25,31 @@ export default class App extends React.Component {
 
   render() {
     return (
-        <Container fluid="md">
-          <div className="row px-3 fixed-top h-100">
-            <div className="col-7 overflow-auto h-100">
+      <Container fluid="md">
+        <div className="row px-3 fixed-top h-100">
+          <div className="col-6 overflow-auto h-100">
 
-              <Select
-               n={this.state.n}
-               project={this.state.project}
-               clipsArray={this.state.clipsArray}
-               clickHandler={this.handleClick}
-               />
+            <Select
+              n={this.state.n}
+              project={this.state.project}
+              clipsArray={this.state.clipsArray}
+              clickHandler={this.handleClick}
+            />
 
 
-            </div>
-            <div className="col-5 overflow-auto h-100">
-              <Edit
-               n={this.state.n}
-               project={this.state.project}
-               compilationArray={this.state.compilationArray}
-               clickHandler={this.handleClick}
-               />
-            </div>
           </div>
+          <div className="col-6 overflow-auto h-100">
+            <Edit
+              n={this.state.n}
+              project={this.state.project}
+              compilationArray={this.state.compilationArray}
+              clickHandler={this.handleClick}
+            />
+          </div>
+        </div>
         <Footer
-          clickHandler={this.handleClick}
           compilationArray={this.state.compilationArray}
-        />
+          clickHandler={this.handleClick} />
       </Container>
     );
   }

@@ -55,7 +55,7 @@ export default async function manipulate(obj, buttonName) {
     };
   }
 
-  if (/^Remove+/.test(buttonName)) {
+  if (/^CompilationRemove+/.test(buttonName)) {
     console.debug(`Remove`);
     const n = Number(buttonName.match(/[0-9]+/)[0])
     console.debug(`from: ${n}`);
@@ -65,6 +65,34 @@ export default async function manipulate(obj, buttonName) {
       project: obj.project,
       compilationArray: obj.compilationArray.removeIndex(n),
       clipsArray: obj.clipsArray,
+    };
+  }
+
+  if (/^ClipsRemove+/.test(buttonName)) {
+    console.debug(`Remove`);
+    const n = Number(buttonName.match(/[0-9]+/)[0])
+    console.debug(`from: ${n}`);
+    // Manipulate compilation to move index n 1 space up
+    return {
+      n: obj.n,
+      project: obj.project,
+      compilationArray: obj.compilationArray,
+      clipsArray: obj.clipsArray.removeIndex(n),
+    };
+  }
+
+
+
+  if (/^Add+/.test(buttonName)) {
+    console.debug(`Add`);
+    const n = Number(buttonName.match(/[0-9]+/)[0])
+    console.debug(`from: ${n}`);
+    const clip =  obj.clipsArray.clips[n]
+    return {
+      n: obj.n,
+      project: obj.project,
+      compilationArray: obj.compilationArray.add(clip),
+      clipsArray: obj.clipsArray.removeIndex(n),
     };
   }
 

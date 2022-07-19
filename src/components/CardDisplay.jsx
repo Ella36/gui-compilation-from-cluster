@@ -13,7 +13,7 @@ export default class CardDisplay extends React.Component {
 {this.props.title}
         </Card.Text>
         <Card.Text>
-           {Number(this.props.view_count).toLocaleString()} {this.props.duration} {this.props.language}
+           {Number(this.props.view_count).toLocaleString()} {this.props.duration}s {this.props.language}
             </Card.Text>
         <Card.Text>
           {this.props.game} {this.props.game_id} 

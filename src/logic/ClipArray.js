@@ -82,9 +82,7 @@ export default class ClipArray {
     }
 
     add(clip) {
-        if (/[0-9]+/.test(clip)) {
-            this.clips.push(clip);
-        }
+        this.clips.push(clip);
         return this
     }
 

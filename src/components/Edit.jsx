@@ -7,7 +7,6 @@ export default class Edit extends React.Component {
     return (
       <div>
         <h1> Edit {this.props.project} </h1>
-        <h2> n {this.props.n} </h2>
         <Container>
           {(() => {
             if (this.props.n !== 0) {

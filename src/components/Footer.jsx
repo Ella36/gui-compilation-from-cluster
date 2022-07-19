@@ -13,7 +13,7 @@ export default class Footer extends React.Component {
 render() {
   return(
     <div className="footer">
-      <footer className="py-2 bg-dark fixed-bottom">
+      <footer className="py-2 fixed-bottom bg-dark">
         <div className="container">
           <p className="m-1 p-1 text-center text-white">
             <code className="m-1">
