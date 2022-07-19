@@ -12,7 +12,7 @@
     <img src="public/logo192.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Compilation Clips</h3>
+  <h3 align="center">Select Clips and Edit Compilation</h3>
 
   <p align="center">
     Description

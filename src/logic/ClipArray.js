@@ -16,7 +16,6 @@ function clip_data_to_compilation(c) {
     }
 }
 
-
 export default class ClipArray {
     constructor() {
         this.clips = [];
@@ -59,6 +58,16 @@ export default class ClipArray {
         return this.clips.map((clip) => clip.url).join(',')
     };
 
+
+    get frequency() {
+        if (this.clips.length <= 0){
+            return {}
+        }
+        let freq = {}
+        this.clips.forEach( (clip) => freq[clip.creator] = (freq[clip.creator] || 0) + 1)
+        return freq
+    };
+
     swap(to, from) {
         const temp = this.clips[to]
         this.clips[to] = this.clips[from]
@@ -82,9 +91,7 @@ export default class ClipArray {
     }
 
     add(clip) {
-        if (/[0-9]+/.test(clip)) {
-            this.clips.push(clip);
-        }
+        this.clips.push(clip);
         return this
     }
 
