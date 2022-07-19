@@ -136,7 +136,7 @@ export default async function manipulate(obj, buttonName) {
 
   if (buttonName === "SaveCompilation") {
     console.debug("SaveCompilation");
-    const t = await save_compilation(obj.compilationArray)
+    await save_compilation(obj.compilationArray)
     return {
       n: obj.n,
       project: obj.project,
