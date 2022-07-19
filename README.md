@@ -15,7 +15,6 @@
   <h3 align="center">Select Clips and Edit Compilation</h3>
 
   <p align="center">
-    Description
     <br />
     <a href="https://github.com/soglahash/compilation-clips">Report a Bug</a>
     ·
@@ -44,7 +43,21 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-GUI
+Select/Edit clips
+
+clips.json with clips to select.
+compilation.json existing compilation
+
+shows thumbnails with infinite scroller
+```mermaid
+flowchart LR;
+    clips-->select_clips
+    compilation--may not exist-->select_clips-->compilation2
+    clips[(clips.json)]
+    compilation[(compilation.json)]
+    compilation2[(compilation.csv)]
+```
+GUI Screenshot
 [![Product Name Screen Shot][product-screenshot]]('./screenshot.png')
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -78,8 +91,6 @@ In the project directory, you can run:
 Add UI drag-and-drop
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- LICENSE -->
 ## License
