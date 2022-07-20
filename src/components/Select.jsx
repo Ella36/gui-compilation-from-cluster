@@ -10,8 +10,7 @@ export default class Select extends React.Component {
     isNotCreated: true,
   };
   fetchMoreData = () => {
-    if (this.state.items.length >= this.props.clipsArray.amountOfClips) {
-      this.setState({ hasMore: false });
+    if (!(this.state.hasMore)) {
       return;
     }
     // a fake async api call to slow down scrolling 
@@ -19,7 +18,7 @@ export default class Select extends React.Component {
       this.setState({
         items: this.state.items.concat([""])
       });
-    }, 250);
+    }, 100);
   };
 
   render() {
@@ -28,45 +27,60 @@ export default class Select extends React.Component {
         <h1> Select clips </h1>
         <Container>
           {(() => {
-            if (this.props.clipsArray.amountOfClips > 1) {
-              if (this.state.isNotCreated) {
-                this.state.items = [
-                  "",
-                  "",
-                  "",
-                  "",
-                ]
-                this.state.isNotCreated = false
-              }
-              return (
-                <InfiniteScroll
-                  dataLength={this.state.items.length}
-                  next={this.fetchMoreData}
-                  hasMore={this.state.hasMore}
-                  loader={<h4>Loading...</h4>}
-                  scrollableTarget="scrollableSelection"
-                  endMessage={
-                    <p style={{ textAlign: "center" }}>
-                      <b>Yay! You have seen it all</b>
-                    </p>
-                  }
-                >
-                  {
-                    this.state.items.map(
-                      (_, i) =>
-                        <Element
-                          key={i}
-                          clip={this.props.clipsArray.clips[i]}
-                          clickHandler={this.props.clickHandler}
-                          isCompilation={false}
-                          id={i}
-                        />
-                    )}
-                </InfiniteScroll>
-
-              )
+            if ((this.props.clipsArray.amountOfClips > 1)
+              && (this.state.isNotCreated)) {
+              this.setState({
+                items: [...new Array(4)],
+                isNotCreated: false,
+              })
             }
           })()}
+          <InfiniteScroll
+            dataLength={this.state.items.length}
+            next={this.fetchMoreData}
+            hasMore={this.state.hasMore}
+            loader={<h4>Loading...</h4>}
+            scrollableTarget="scrollableSelection"
+            endMessage={
+              <p style={{ textAlign: "center" }}>
+                <b>Yay! You have seen it all</b>
+              </p>
+            }
+          >
+            {(() => {
+              let clipsToDisplay = []
+              let freq = {}
+              this.state.items.forEach((_, _i) => {
+                const c = this.props.clipsArray.clips.find(
+                  (clip) =>
+                  (clipsToDisplay.every((d) => d.url !== clip.url)
+                    && ((freq[clip.creator] || 0) < 5)
+                  ))
+                if (c === undefined) {
+                  return
+                }
+                clipsToDisplay.push(c)
+                freq[c.creator] = (freq[c.creator] || 0) + 1
+              })
+              if (clipsToDisplay.length < this.state.items) {
+                this.setState({
+                  hasMore: false,
+                  items: [...new Array(clipsToDisplay.length)]
+                });
+              }
+              return (
+                clipsToDisplay.map(
+                  (clip, i) =>
+                    <Element
+                      key={i}
+                      clip={clip}
+                      clickHandler={this.props.clickHandler}
+                      isCompilation={false}
+                      id={i}
+                    />
+                ))
+            })()}
+          </InfiniteScroll>
         </Container>
       </div>
     );
