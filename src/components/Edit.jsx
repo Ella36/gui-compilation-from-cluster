@@ -1,6 +1,8 @@
 import React from "react";
 import Element from "./Element";
 import Container from 'react-bootstrap/Container';
+import { Row, Col } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
 
 export default class Edit extends React.Component {
   render() {
@@ -17,6 +19,22 @@ export default class Edit extends React.Component {
                 isCompilation={true}
                 id={i}
               />)}
+          <Row>
+            <Col className="col-9">
+              <div className="col-12">
+                <Card className="bg-dark text-light m-1 col-12">
+                  <Card.Body>
+                    <Card.Text className="text-dark"> {"Placeholder"} </Card.Text>
+                    <Card.Text className="text-dark"> {"Placeholder"} </Card.Text>
+                    <Card.Text className="text-dark"> {"Placeholder"} </Card.Text>
+                    <Card.Text > {"Placeholder"} </Card.Text>
+                  </Card.Body>
+                </Card>
+              </div>
+            </Col>
+            <Col className="col-2">
+            </Col>
+          </Row>
         </Container>
       </div>
     );

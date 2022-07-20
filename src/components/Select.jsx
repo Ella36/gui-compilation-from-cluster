@@ -39,7 +39,7 @@ export default class Select extends React.Component {
             dataLength={this.state.items.length}
             next={this.fetchMoreData}
             hasMore={this.state.hasMore}
-            loader={<h4>Loading...</h4>}
+            loader={<h4>Load clips with "Read clips.json"</h4>}
             scrollableTarget="scrollableSelection"
             endMessage={
               <p style={{ textAlign: "center" }}>
