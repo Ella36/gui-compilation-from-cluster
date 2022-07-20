@@ -55,6 +55,40 @@ export default async function manipulate(obj, buttonName) {
     };
   }
 
+  if (/^Top+/.test(buttonName)) {
+    console.debug(`Move to top`);
+    const n = Number(buttonName.match(/[0-9]+/)[0])
+    console.debug(`from: ${n}`);
+    // Manipulate compilation to move index n 1 space up
+    const from = n
+    const to = 0
+    console.debug(`to: ${to}`);
+    let clips_swapped = obj.compilationArray.swap(to, from)
+    return {
+      n: obj.n,
+      project: obj.project,
+      compilationArray: clips_swapped,
+      clipsArray: obj.clipsArray,
+    };
+  }
+
+  if (/^Bottom+/.test(buttonName)) {
+    console.debug(`Move to bottom`);
+    const n = Number(buttonName.match(/[0-9]+/)[0])
+    console.debug(`from: ${n}`);
+    // Manipulate compilation to move index n 1 space up
+    const from = n
+    const to = obj.compilationArray.amountOfClips - 1
+    console.debug(`to: ${to}`);
+    let clips_swapped = obj.compilationArray.swap(to, from)
+    return {
+      n: obj.n,
+      project: obj.project,
+      compilationArray: clips_swapped,
+      clipsArray: obj.clipsArray,
+    };
+  }
+
   if (/^CompilationRemove+/.test(buttonName)) {
     console.debug(`Remove`);
     const n = Number(buttonName.match(/[0-9]+/)[0])
