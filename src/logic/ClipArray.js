@@ -104,11 +104,22 @@ export default class ClipArray {
     }
 
 
-    indexOfLowN() {
-        const result = this.clips.findIndex((clip) => {
-            return this.frequency[clip.creator] === undefined;
-        });
-        return result
+    indexOfLowN(compilation) {
+        let index = this.clips.findIndex(
+            (clip) => compilation.frequency[clip.creator] === undefined
+        )
+        if (index >= 0){
+            return index
+        }
+        for (let i=1; i < 128; i++){
+            index = this.clips.findIndex(
+                (clip) => compilation.frequency[clip.creator] === i
+            )
+            if (index >= 0){
+                return index
+            }
+        }
+        return undefined
     }
     indexOfMostViews() {
         return 0

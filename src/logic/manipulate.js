@@ -136,7 +136,7 @@ export default async function manipulate(obj, buttonName) {
 
   if (buttonName === "SelectLowN") {
     console.debug("SelectLowN");
-    let n = obj.clipsArray.indexOfLowN()
+    let n = obj.clipsArray.indexOfLowN(obj.compilationArray)
     if (n === undefined) {
       return {
         n: obj.n,
