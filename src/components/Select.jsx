@@ -49,6 +49,7 @@ export default class Select extends React.Component {
           >
             {(() => {
               let clipsToDisplay = []
+              let clipsToDispayClipsArrayIndex = []
               let freq = {}
               this.state.items.forEach((_, _i) => {
                 const c = this.props.clipsArray.clips.find(
@@ -60,6 +61,8 @@ export default class Select extends React.Component {
                   return
                 }
                 clipsToDisplay.push(c)
+                const index = this.props.clipsArray.clips.indexOf(c)
+                clipsToDispayClipsArrayIndex.push(index)
                 freq[c.creator] = (freq[c.creator] || 0) + 1
               })
               if (clipsToDisplay.length < this.state.items) {
@@ -77,6 +80,7 @@ export default class Select extends React.Component {
                       clickHandler={this.props.clickHandler}
                       isCompilation={false}
                       id={i}
+                      clip_id={clipsToDispayClipsArrayIndex[i]}
                     />
                 ))
             })()}

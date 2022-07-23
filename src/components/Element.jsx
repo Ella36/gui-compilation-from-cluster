@@ -47,8 +47,8 @@ export default class Element extends React.Component {
             else {
               return (
                 <div>
-                  <Button onClick={() => this.handleClick(`Add${this.props.id}`)} className="btn m-1 p-2 btn-success">Add</Button>
-                  <Button onClick={() => this.handleClick(`ClipsRemove${this.props.id}`)} className="btn m-1 p-2 btn-danger">Remove</Button>
+                  <Button onClick={() => this.handleClick(`Add${this.props.clip_id}`)} className="btn m-1 p-2 btn-success">Add</Button>
+                  <Button onClick={() => this.handleClick(`ClipsRemove${this.props.clip_id}`)} className="btn m-1 p-2 btn-danger">Remove</Button>
                 </div>
               )
             }
