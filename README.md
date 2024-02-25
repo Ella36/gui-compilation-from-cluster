@@ -16,9 +16,9 @@
 
   <p align="center">
     <br />
-    <a href="https://github.com/Ella36/compilation-clips">Report a Bug</a>
+    <a href="https://github.com/jellemeeus/compilation-clips">Report a Bug</a>
     ·
-    <a href="https://github.com/Ella36/compilation-clips">Request Feature</a>
+    <a href="https://github.com/jellemeeus/compilation-clips">Request Feature</a>
   </p>
 </div>
 
