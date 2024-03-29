@@ -1,3 +1,6 @@
+This is project has been rewritten with Vue, vite, electronjs
+https://github.com/jellemeeus/gui-compilation-from-cluster-vue
+
 
 <div id="top"></div>
 
